@@ -112,12 +112,12 @@ fun main() {
     //    reader.close()
 
     // have 2 random geo points to simulate current position
-    val currLat: Double = 46.2194828
-    val currLon: Double = 15.2719759
-    val currentPoint: GpsPoint = GpsPoint(lat = currLat, lon = currLon)
+    val currLat = 46.2194828
+    val currLon = 15.2719759
+    val currentPoint = GpsPoint(lat = currLat, lon = currLon)
 
     // find entries within 10km radius
-    val targetRadius: Double = 10.0
+    val targetRadius = 10.0
 
     val rad2radiusRatio = targetRadius / earthRadiusKm
 
@@ -137,9 +137,8 @@ fun main() {
                 currentPoint = currentPoint,
                 targetPoint = GpsPoint(lon = mountain.longitude, lat = mountain.latitude)
         )
-
         MountainWithDistance(mountain, distance)
-    }.sortedBy { mountainWithDistance -> mountainWithDistance.distance }
+    }.sortedBy { it.distance }
 
     // output results
     for (sortedMountain in sortedMountainWithDistance) {
